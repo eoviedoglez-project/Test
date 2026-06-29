@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de Pago - Eduardo Oviedo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 1.5rem; }
+        .data-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: left;
+            border: 1px solid #e9ecef;
+        }
+        .label { font-size: 0.8rem; color: #666; display: block; margin-bottom: 5px; }
+        .value-row { display: flex; justify-content: space-between; align-items: center; }
+        .value { font-weight: bold; color: #2c3e50; font-size: 1.1rem; word-break: break-all; }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        
+        .paypal-section { margin-top: 2rem; padding-top: 1rem; border-top: 2px solid #eee; }
+        .qr-img { width: 100%; max-width: 200px; margin: 10px 0; border-radius: 8px; }
+        .btn-paypal { background-color: #003087; width: 100%; padding: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Mis Datos de Pago</h2>
+    
+    <div class="data-box">
+        <span class="label">Nombre</span>
+        <div class="value-row">
+            <span class="value" id="nombre">Eduardo Oviedo</span>
+            <button onclick="copyText('nombre')">Copiar</button>
+        </div>
+    </div>
+
+    <div class="data-box">
+        <span class="label">CLABE (Spin Oxxo)</span>
+        <div class="value-row">
+            <span class="value" id="clabe">000000000000000000</span> <button onclick="copyText('clabe')">Copiar</button>
+        </div>
+    </div>
+
+    <div class="paypal-section">
+        <h3>PayPal</h3>
+        <p>Escanea para pagar</p>
+        <img src="qr-paypal.png" alt="Código QR PayPal" class="qr-img">
+        <br>
+        <a href="https://www.paypal.com/paypalme/TU_USUARIO" target="_blank">
+            <button class="btn-paypal">Ir a mi PayPal</button>
+        </a>
+    </div>
+</div>
+
+<script>
+    function copyText(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("¡Copiado al portapapeles!");
+        }).catch(err => {
+            console.error('Error al copiar: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
